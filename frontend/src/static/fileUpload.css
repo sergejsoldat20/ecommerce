@@ -1,0 +1,29 @@
+.fileUpolad {
+  width: 415px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.fileUploadIcon {
+  width: 50px;
+}
+
+.ant-upload {
+  height: 300px !important;
+}
+
+.buttonIcon {
+  height: 40px;
+}
+
+.ant-radio-group {
+  height: 80px !important;
+  width: 800px !important;
+}
+
+.ant-radio-button-wrapper {
+  height: 60px !important;
+  justify-content: center !important;
+  padding-top: 10px !important;
+  margin: 0 !important;
+}

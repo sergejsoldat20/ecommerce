@@ -1,0 +1,66 @@
+body .login-background {
+  background: url("../static/images/loginBackground.jpg") no-repeat fixed;
+  background-size: cover;
+  height: 100vh;
+}
+body .login-background input {
+  background-color: white !important;
+}
+body .login-card .card {
+  /*background-color: #E8EFFF !important;*/
+  border-radius: 10px;
+}
+
+.btn-show-password {
+  float: right;
+  margin-top: -2.4rem;
+  z-index: 2;
+  color: #000;
+}
+
+.btn-show-password:hover {
+  color: #000;
+}
+
+body .card-title img {
+  width: 214px;
+  height: 57px;
+}
+
+body .login-label {
+  text-align: left;
+  font: normal normal 600 18px "Open Sans", sans-serif;
+  letter-spacing: 0px;
+  color: black !important;
+  opacity: 1;
+}
+body .loggin-error {
+  color: red;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+}
+
+body .loggin-error img {
+  margin-bottom: 3px;
+}
+body .login-submit {
+  background-color: #93dafd !important;
+}
+body .login-submit:hover {
+  background-color: #5099fc !important;
+}
+
+.entrenceLink {
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #93dafd !important;
+}
+
+.entrenceLink:hover {
+  color: #5099fc !important;
+  text-decoration: underline;
+}
