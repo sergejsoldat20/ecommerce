@@ -10,11 +10,14 @@ namespace DatabaseGenerator.Data.Entities
 		public string Description { get; set; }
 		public DateTime CreatedTime { get; set; }
 		public int CategoryId { get; set; }
-		public Category Category { get; set; }
+		public virtual Category Category { get; set; }
 		public int AccountId { get; set; }
-		public Account Account { get; set; }
-		public List<Attribute> Attributes { get; set; }
-		public List<Photo> Photos { get; set; }
+		public virtual Account Account { get; set; }
+		public virtual List<Attribute> Attributes { get; set; }
+		public virtual List<Photo> Photos { get; set; }
+		public virtual List<Comment> Comments { get; set; }
+		public virtual List<ReportMessage> ReportMessages { get; set; }
+		public bool IsDeleted { get; set; }
 
 	}
 }

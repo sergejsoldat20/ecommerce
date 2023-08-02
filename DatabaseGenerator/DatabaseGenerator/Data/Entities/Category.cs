@@ -4,8 +4,8 @@
 	{
 		public int Id { get; set; }	
 		public string Name { get; set; }
-		public List<Attribute> Attributes { get; set; }
-		private List<Product> Proucts { get; set; }
+		public virtual List<Attribute> Attributes { get; set; }
+		public virtual List<Product> Products { get; set; }
 
 	}
 }

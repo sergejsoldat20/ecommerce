@@ -1,6 +1,6 @@
 ﻿namespace DatabaseGenerator.Data.Entities
 {
-	public class ProductHasAttributes
+	public class ProductAttribute
 	{
 		public int ProductId { get; set; }
 		public int AttributeId { get; set; }
