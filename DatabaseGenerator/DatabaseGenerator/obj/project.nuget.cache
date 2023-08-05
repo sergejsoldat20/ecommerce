@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "B1LHNZz6PxrPVxLDRbVFz8m11wICm64RYo6LRNayoTswUgwGd8fBzfr/By95KB6WsarpRUMM/V6pzFkbjoiieQ==",
+  "dgSpecHash": "vzGWVD1LrZTNe/z7UhMhnbEa4DefYcJEjzc9DRAi0nZ0QKEKA9lMwRNAhdsTfKBP8aM+CwPdr+j1ISmW3qSUkA==",
   "success": true,
   "projectFilePath": "C:\\Users\\serge\\Desktop\\ecommerce\\DatabaseGenerator\\DatabaseGenerator\\DatabaseGenerator.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\serge\\.nuget\\packages\\danielcunha.toolkit.postgresql.snakecase\\1.1.0\\danielcunha.toolkit.postgresql.snakecase.1.1.0.nupkg.sha512",
     "C:\\Users\\serge\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\serge\\.nuget\\packages\\marques.efcorev6.0.snakecase\\6.0.4\\marques.efcorev6.0.snakecase.6.0.4.nupkg.sha512",
     "C:\\Users\\serge\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.7\\microsoft.aspnetcore.openapi.7.0.7.nupkg.sha512",
     "C:\\Users\\serge\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.9\\microsoft.entityframeworkcore.7.0.9.nupkg.sha512",
     "C:\\Users\\serge\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.9\\microsoft.entityframeworkcore.abstractions.7.0.9.nupkg.sha512",

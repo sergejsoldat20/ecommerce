@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "DatabaseGenerator/1.0.0": {
         "dependencies": {
+          "DanielCunha.Toolkit.PostgreSQL.SnakeCase": "1.1.0",
+          "Marques.EFCorev6.0.SnakeCase": "6.0.4",
           "Microsoft.AspNetCore.OpenApi": "7.0.7",
           "Microsoft.EntityFrameworkCore": "7.0.9",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.9",
@@ -19,11 +21,35 @@
           "DatabaseGenerator.dll": {}
         }
       },
+      "DanielCunha.Toolkit.PostgreSQL.SnakeCase/1.1.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "Microsoft.EntityFrameworkCore.Design": "7.0.9"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/DanielCunha.Toolkit.PostgreSQL.SnakeCase.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "Marques.EFCorev6.0.SnakeCase/6.0.4": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.9"
+        },
+        "runtime": {
+          "lib/net6.0/Marques.EFCorev6.0.SnakeCase.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -252,12 +278,26 @@
       "serviceable": false,
       "sha512": ""
     },
+    "DanielCunha.Toolkit.PostgreSQL.SnakeCase/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QkS8ib0qxH1Dn4D1QGJKPA4X1tLo2o1y5x4mQC1HMkIXis8ZuaNWoPo+5S8R2I7tmszQjh4NKQfwYIgNIMCvDw==",
+      "path": "danielcunha.toolkit.postgresql.snakecase/1.1.0",
+      "hashPath": "danielcunha.toolkit.postgresql.snakecase.1.1.0.nupkg.sha512"
+    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "Marques.EFCorev6.0.SnakeCase/6.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WcWWevfoGgr30/3g9dVk1QemL1GZnDevOLrJ6ETfQ4nglOPjSn3wP/KoLSLAP7iw6Pe0KUiYYHV8y51CFBrmpw==",
+      "path": "marques.efcorev6.0.snakecase/6.0.4",
+      "hashPath": "marques.efcorev6.0.snakecase.6.0.4.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/7.0.7": {
       "type": "package",

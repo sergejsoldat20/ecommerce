@@ -2,10 +2,27 @@
   "version": 3,
   "targets": {
     "net7.0": {
+      "DanielCunha.Toolkit.PostgreSQL.SnakeCase/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "3.0.0",
+          "Microsoft.EntityFrameworkCore.Design": "3.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/DanielCunha.Toolkit.PostgreSQL.SnakeCase.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/DanielCunha.Toolkit.PostgreSQL.SnakeCase.dll": {
+            "related": ".runtimeconfig.json"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/Humanizer.dll": {
             "related": ".xml"
           }
         },
@@ -13,6 +30,19 @@
           "lib/net6.0/Humanizer.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Marques.EFCorev6.0.SnakeCase/6.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.2",
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.2"
+        },
+        "compile": {
+          "lib/net6.0/Marques.EFCorev6.0.SnakeCase.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Marques.EFCorev6.0.SnakeCase.dll": {}
         }
       },
       "Microsoft.AspNetCore.OpenApi/7.0.7": {
@@ -88,7 +118,7 @@
           "Mono.TextTemplating": "2.2.1"
         },
         "compile": {
-          "lib/net6.0/_._": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll": {
             "related": ".xml"
           }
         },
@@ -244,7 +274,7 @@
           "System.Text.Json": "7.0.0"
         },
         "compile": {
-          "lib/net7.0/_._": {
+          "lib/net7.0/Microsoft.Extensions.DependencyModel.dll": {
             "related": ".xml"
           }
         },
@@ -357,7 +387,7 @@
           "System.CodeDom": "4.4.0"
         },
         "compile": {
-          "lib/netstandard2.0/_._": {}
+          "lib/netstandard2.0/Mono.TextTemplating.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/Mono.TextTemplating.dll": {}
@@ -464,7 +494,7 @@
       "System.CodeDom/4.4.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.0/_._": {
+          "ref/netstandard2.0/System.CodeDom.dll": {
             "related": ".xml"
           }
         },
@@ -475,7 +505,7 @@
       "System.Text.Encodings.Web/7.0.0": {
         "type": "package",
         "compile": {
-          "lib/net7.0/_._": {
+          "lib/net7.0/System.Text.Encodings.Web.dll": {
             "related": ".xml"
           }
         },
@@ -500,7 +530,7 @@
           "System.Text.Encodings.Web": "7.0.0"
         },
         "compile": {
-          "lib/net7.0/_._": {
+          "lib/net7.0/System.Text.Json.dll": {
             "related": ".xml"
           }
         },
@@ -516,6 +546,19 @@
     }
   },
   "libraries": {
+    "DanielCunha.Toolkit.PostgreSQL.SnakeCase/1.1.0": {
+      "sha512": "QkS8ib0qxH1Dn4D1QGJKPA4X1tLo2o1y5x4mQC1HMkIXis8ZuaNWoPo+5S8R2I7tmszQjh4NKQfwYIgNIMCvDw==",
+      "type": "package",
+      "path": "danielcunha.toolkit.postgresql.snakecase/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "danielcunha.toolkit.postgresql.snakecase.1.1.0.nupkg.sha512",
+        "danielcunha.toolkit.postgresql.snakecase.nuspec",
+        "lib/netcoreapp3.0/DanielCunha.Toolkit.PostgreSQL.SnakeCase.dll",
+        "lib/netcoreapp3.0/DanielCunha.Toolkit.PostgreSQL.SnakeCase.runtimeconfig.json"
+      ]
+    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -532,6 +575,18 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Marques.EFCorev6.0.SnakeCase/6.0.4": {
+      "sha512": "WcWWevfoGgr30/3g9dVk1QemL1GZnDevOLrJ6ETfQ4nglOPjSn3wP/KoLSLAP7iw6Pe0KUiYYHV8y51CFBrmpw==",
+      "type": "package",
+      "path": "marques.efcorev6.0.snakecase/6.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Marques.EFCorev6.0.SnakeCase.dll",
+        "marques.efcorev6.0.snakecase.6.0.4.nupkg.sha512",
+        "marques.efcorev6.0.snakecase.nuspec"
       ]
     },
     "Microsoft.AspNetCore.OpenApi/7.0.7": {
@@ -1565,6 +1620,8 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "DanielCunha.Toolkit.PostgreSQL.SnakeCase >= 1.1.0",
+      "Marques.EFCorev6.0.SnakeCase >= 6.0.4",
       "Microsoft.AspNetCore.OpenApi >= 7.0.7",
       "Microsoft.EntityFrameworkCore >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.9",
@@ -1613,6 +1670,14 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "DanielCunha.Toolkit.PostgreSQL.SnakeCase": {
+            "target": "Package",
+            "version": "[1.1.0, )"
+          },
+          "Marques.EFCorev6.0.SnakeCase": {
+            "target": "Package",
+            "version": "[6.0.4, )"
+          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[7.0.7, )"

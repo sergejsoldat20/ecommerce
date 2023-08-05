@@ -41,3 +41,5 @@ C:\Users\serge\Desktop\ecommerce\DatabaseGenerator\DatabaseGenerator\obj\Debug\n
 C:\Users\serge\Desktop\ecommerce\DatabaseGenerator\DatabaseGenerator\obj\Debug\net7.0\DatabaseGenerator.pdb
 C:\Users\serge\Desktop\ecommerce\DatabaseGenerator\DatabaseGenerator\obj\Debug\net7.0\DatabaseGenerator.genruntimeconfig.cache
 C:\Users\serge\Desktop\ecommerce\DatabaseGenerator\DatabaseGenerator\obj\Debug\net7.0\ref\DatabaseGenerator.dll
+C:\Users\serge\Desktop\ecommerce\DatabaseGenerator\DatabaseGenerator\bin\Debug\net7.0\DanielCunha.Toolkit.PostgreSQL.SnakeCase.dll
+C:\Users\serge\Desktop\ecommerce\DatabaseGenerator\DatabaseGenerator\bin\Debug\net7.0\Marques.EFCorev6.0.SnakeCase.dll

@@ -1,4 +1,5 @@
 ﻿using DatabaseGenerator.Data.Entities;
+using Marques.EFCore.SnakeCase;
 using Microsoft.EntityFrameworkCore;
 using Attribute = DatabaseGenerator.Data.Entities.Attribute;
 
@@ -14,6 +15,8 @@ public class ApplicationDbContext : DbContext
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		base.OnModelCreating(modelBuilder);
+
+		// modelBuilder.ToSnakeCase();
 
 		modelBuilder.Entity<Account>(entity =>
 		{
@@ -41,6 +44,7 @@ public class ApplicationDbContext : DbContext
 
 		modelBuilder.Entity<Attribute>(entity =>
 		{
+			// entity.ToTable("attribute");
 			entity.HasKey(x => x.Id);
 			entity.Property(x => x.Type).HasMaxLength(10);
 			entity.Property(x => x.Name).HasMaxLength(50);
@@ -69,7 +73,7 @@ public class ApplicationDbContext : DbContext
 		{
 			entity.HasKey(x => x.Id);
 			entity.Property(x => x.Text).HasMaxLength(100);
-			entity.Property(x => x.CreationTime);
+			entity.Property(x => x.CreatedTime);
 
 			entity
 			.HasOne(x => x.Product)
