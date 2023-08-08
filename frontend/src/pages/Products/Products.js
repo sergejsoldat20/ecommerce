@@ -1,9 +1,26 @@
-import { Card, Col, Row } from "antd";
-import React from "react";
+/* eslint-disable no-unused-vars */
+import { Col, Row } from "antd";
+import React, { useEffect, useState } from "react";
 import "../../static/home.css";
+import productService from "../../services/products.service";
+import ProductCard from "./ProductCard";
 
-const { Meta } = Card;
 export default function Products() {
+  /* const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // loadProducts();
+  });
+
+  const loadProducts = () => {
+    productService.getAll().then((response) => {
+      if (response.status === 200) {
+        setProducts(response.data);
+      } else {
+        alert("Can't fetch data");
+      }
+    });
+  };*/
   return (
     <div style={{ padding: "2%", display: "flex", flexDirection: "column" }}>
       {Array.from({ length: 5 }, (_, rowIndex) => (
@@ -12,26 +29,15 @@ export default function Products() {
             flex: 1,
             overflowY: "auto",
           }}
-          gutter={[4, 4]}
+          gutter={[5, 5]}
           key={rowIndex}
         >
           {Array.from({ length: 4 }, (_, colIndex) => (
-            <Col xs={24} sm={12} md={8} lg={6} key={colIndex}>
-              {/*<div id="administrationContainer" className="wrapper">*/}
-              <div id="administrationContainer" className="cardsWrapper">
-                <Card
-                  hoverable
-                  // style={{ width: "100%", height: "105%" }}
-                  className="homeCard"
-                  cover={
-                    <img
-                      alt="example"
-                      src="https://fastly.picsum.photos/id/866/200/300.jpg?hmac=rcadCENKh4rD6MAp6V_ma-AyWv641M4iiOpe1RyFHeI"
-                    />
-                  }
-                >
-                  <Meta title="Products" description="1000" />
-                </Card>
+            <Col xs={20} sm={12} md={6} lg={6} key={colIndex}>
+              <div id={colIndex} className="wrapper">
+                <div id={colIndex} className="cardsWrapper">
+                  <ProductCard />
+                </div>
               </div>
             </Col>
           ))}

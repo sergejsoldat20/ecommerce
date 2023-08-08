@@ -3,6 +3,7 @@ const baseConfig = {
   baseURL: "http://localhost:9000",
 };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   service: (useAuth) => {
     const instance = axios.create(baseConfig);

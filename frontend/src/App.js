@@ -5,7 +5,7 @@ import Products from "./pages/Products/Products";
 import Filter from "./pages/Filter/Filter";
 import Navbar from "./layout/Navbar";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import ProductsTest from "./pages/Products/ProductsTest";
+import Login from "./pages/Login/Login";
 
 function App() {
   return (
@@ -15,7 +15,8 @@ function App() {
         <Routes>
           <Route element={<Products />} path={"/products"} />
           <Route element={<Filter />} path={"/filter"} />
-          <Route element={<ProductsTest />} path={"/test"} />
+          <Route element={<Login />} path={"/login"} />
+          {/* <Route element={<ProductsTest />} path={"/test"} /> */}
         </Routes>
       </BrowserRouter>
     </div>

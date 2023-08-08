@@ -1,5 +1,5 @@
 body .login-background {
-  background: url("../static/images/loginBackground.jpg") no-repeat fixed;
+  background: url("../static/images/logo-bg-ecommerce.jpg") no-repeat fixed;
   background-size: cover;
   height: 100vh;
 }
