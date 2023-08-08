@@ -35,72 +35,7 @@ export default function Login() {
             <div className="card">
               <div className="card-body p-3">
                 <form onSubmit={handleSubmit(onsubmit)}>
-                  <label
-                    className="mb-2 text-white login-label"
-                    htmlFor="username"
-                  >
-                    Registracija
-                  </label>
-                  <div className="mb-4">
-                    <label
-                      className="mb-2 text-white login-label"
-                      htmlFor="username"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name={"username"}
-                      {...register("email", { required: true })}
-                    />
-                    {errors.email && (
-                      <span className="loggin-error">
-                        <BiError size={20} color={"red"} /> Ovo polje je
-                        obavezno!
-                      </span>
-                    )}
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      className="mb-2 text-white login-label"
-                      htmlFor="username"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name={"username"}
-                      {...register("email", { required: true })}
-                    />
-                    {errors.email && (
-                      <span className="loggin-error">
-                        <BiError size={20} color={"red"} /> Ovo polje je
-                        obavezno!
-                      </span>
-                    )}
-                  </div>
-                  <div className="mb-4">
-                    <label
-                      className="mb-2 text-white login-label"
-                      htmlFor="username"
-                    >
-                      Email
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name={"username"}
-                      {...register("email", { required: true })}
-                    />
-                    {errors.email && (
-                      <span className="loggin-error">
-                        <BiError size={20} color={"red"} /> Ovo polje je
-                        obavezno!
-                      </span>
-                    )}
-                  </div>
+                  <label className="mb-2 text-white login-label">Prijava</label>
                   <div className="mb-4">
                     <label
                       className="mb-2 text-white login-label"
