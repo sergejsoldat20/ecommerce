@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import webshop.contracts.CommentServiceContract;
 import webshop.models.base.CrudJpaService;
 import webshop.models.entities.CommentEntity;
+import webshop.models.requests.Comment;
 import webshop.repositories.CommentRepository;
+
+import java.util.List;
 
 @Service
 public class CommentService extends CrudJpaService<CommentEntity, Integer> implements CommentServiceContract {
@@ -16,5 +19,10 @@ public class CommentService extends CrudJpaService<CommentEntity, Integer> imple
         super(repository, modelMapper, CommentEntity.class);
         this.repository = repository;
         this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public List<Comment> getAllByProductId(Integer productId) {
+        return null;
     }
 }

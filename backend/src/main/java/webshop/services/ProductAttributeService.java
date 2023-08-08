@@ -6,7 +6,10 @@ import webshop.contracts.ProductAttributeServiceContract;
 import webshop.models.base.CrudJpaService;
 import webshop.models.entities.ProductAttributeEntity;
 import webshop.models.entities.ProductAttributeEntityPK;
+import webshop.models.requests.ProductAttribute;
 import webshop.repositories.ProductAttributeRepository;
+
+import java.util.List;
 
 @Service
 public class ProductAttributeService extends CrudJpaService<ProductAttributeEntity, ProductAttributeEntityPK> implements ProductAttributeServiceContract {
@@ -23,5 +26,10 @@ public class ProductAttributeService extends CrudJpaService<ProductAttributeEnti
     @Override
     public void addToDatabase(ProductAttributeEntity entity) {
         repository.saveAndFlush(entity);
+    }
+
+    @Override
+    public List<ProductAttribute> getAllById(Integer productId, Integer attributeId) {
+        return null;
     }
 }

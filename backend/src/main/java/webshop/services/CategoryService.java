@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import webshop.contracts.CategoryServiceContract;
 import webshop.models.base.CrudJpaService;
 import webshop.models.entities.CategoryEntity;
+import webshop.models.requests.Category;
 import webshop.repositories.CategoryRepository;
+
+import java.util.List;
 
 @Service
 public class CategoryService extends CrudJpaService<CategoryEntity, Integer> implements CategoryServiceContract {
@@ -16,5 +19,10 @@ public class CategoryService extends CrudJpaService<CategoryEntity, Integer> imp
         super(categoryRepository, modelMapper, CategoryEntity.class);
         this.categoryRepository = categoryRepository;
         this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public List<Category> getAllCategories() {
+        return null;
     }
 }

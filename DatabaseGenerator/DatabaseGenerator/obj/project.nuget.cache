@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vzGWVD1LrZTNe/z7UhMhnbEa4DefYcJEjzc9DRAi0nZ0QKEKA9lMwRNAhdsTfKBP8aM+CwPdr+j1ISmW3qSUkA==",
+  "dgSpecHash": "AfYXqUH6YAmnKDEbf0RXjurWeIyNFxOiXShMbJU6vjFLCa2NTilqLjgMvWo9F+cjzfLONrfYss3NEu4qYKptzA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\serge\\Desktop\\ecommerce\\DatabaseGenerator\\DatabaseGenerator\\DatabaseGenerator.csproj",
+  "projectFilePath": "C:\\Users\\serge\\OneDrive\\Desktop\\InternetProgramiranje\\DatabaseGenerator\\DatabaseGenerator\\DatabaseGenerator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\serge\\.nuget\\packages\\danielcunha.toolkit.postgresql.snakecase\\1.1.0\\danielcunha.toolkit.postgresql.snakecase.1.1.0.nupkg.sha512",
     "C:\\Users\\serge\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

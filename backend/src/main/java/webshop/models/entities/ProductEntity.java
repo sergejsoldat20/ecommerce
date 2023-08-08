@@ -40,6 +40,10 @@ public class ProductEntity implements BaseEntity<Integer> {
     @Column(name = "is_deleted")
     private Boolean isDeleted;
 
+    @Basic
+    @Column(name = "price")
+    private Double price;
+
     public Boolean getDeleted() {
         return isDeleted;
     }

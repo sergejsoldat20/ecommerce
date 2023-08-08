@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import webshop.contracts.AttributeServiceContract;
 import webshop.models.base.CrudJpaService;
 import webshop.models.entities.AttributeEntity;
+import webshop.models.requests.Attribute;
 import webshop.repositories.AttributeRepository;
+
+import java.util.List;
 
 @Service
 public class AttributeService extends CrudJpaService<AttributeEntity, Integer> implements AttributeServiceContract {
@@ -16,5 +19,15 @@ public class AttributeService extends CrudJpaService<AttributeEntity, Integer> i
         super(attributeRepository, modelMapper, AttributeEntity.class);
         this.attributeRepository = attributeRepository;
         this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public List<Attribute> getAllAttributes() {
+        return null;
+    }
+
+    @Override
+    public List<Attribute> getAllByCategoryId(Integer categoryId) {
+        return null;
     }
 }
