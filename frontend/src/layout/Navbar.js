@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand m-2" href="/">
-        <b>Navbar</b>
+        <h5>Navbar</h5>
       </a>
       <button
         className="navbar-toggler"
