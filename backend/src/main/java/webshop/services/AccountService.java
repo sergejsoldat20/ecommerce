@@ -44,6 +44,12 @@ public class AccountService extends CrudJpaService<AccountEntity, Integer> imple
     }
 
     @Override
+    public Integer getCurrentAccountId() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return super.getModelMapper().map(accountRepository.findByUsername(username), AccountResponse.class).getId();
+    }
+
+    @Override
     public AccountResponse getAccountById(Integer id) {
         return null;
     }

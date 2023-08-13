@@ -1,13 +1,11 @@
-package webshop.models.requests;
+package webshop.models.responses;
 
 import lombok.Data;
 
 import java.sql.Timestamp;
-
 @Data
-public class Comment {
+public class CommentResponse {
     private String text;
     private Timestamp createdTime;
-    private Integer accountId;
-    private Integer productId;
+    private Boolean belongToUser;
 }

@@ -17,8 +17,8 @@ export default function Login() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      username: "test4@email.com",
-      password: "test",
+      username: "sega",
+      password: "pass",
       // email: "sergej@gmail.com", password: "pass",
     },
   });
@@ -33,7 +33,7 @@ export default function Login() {
       .then((result) => {
         if (result.status === 200) {
           localStorage.setItem("token", result.data.token);
-          navigate("/homepage");
+          navigate("/");
         }
       })
       .catch((err) => {

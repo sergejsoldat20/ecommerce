@@ -45,8 +45,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/account/**").permitAll()
-                .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-                .requestMatchers("/swagger-ui-custom.html").permitAll()
+                .requestMatchers("/comments/**").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
+                .requestMatchers(HttpMethod.POST,"/attribute-values/insert").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
+                .requestMatchers(HttpMethod.POST,"/products/insert").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
+                .requestMatchers("/attribute-values/**").permitAll()
+                .requestMatchers("/products/**").permitAll()
+                .requestMatchers("/photos/**").permitAll()
+                .requestMatchers("/categories/**").permitAll()
                 .and()
                 .httpBasic();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -21,7 +21,7 @@ public class PhotosController {
         this.service = service;
     }
 
-    @GetMapping("/by_post_id/{id}")
+    @GetMapping("/by-post-id/{id}")
     public ResponseEntity<List<Photo>> getPhotosByPostId(@PathVariable Integer id){
         if(service.getAllPhotosByProductId(id) != null) {
             return ResponseEntity.ok(service.getAllPhotosByProductId(id));

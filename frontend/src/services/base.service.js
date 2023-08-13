@@ -11,7 +11,7 @@ export default {
     if (useAuth) {
       instance.interceptors.request.use(
         async (config) => {
-          const token = localStorage.getItem("jwt");
+          const token = localStorage.getItem("token");
           if (token) {
             config.headers = {
               ...config.headers,

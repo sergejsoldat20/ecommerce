@@ -15,6 +15,14 @@ export const getCurrentUser = () => {
   return authorizedInstance.get("/users/current-user");
 };
 
+export const checkIfAuthorized = () => {
+  if (localStorage.getItem("token") !== null) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   authenticate,

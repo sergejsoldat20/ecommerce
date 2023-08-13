@@ -6,9 +6,11 @@ import webshop.contracts.AttributeServiceContract;
 import webshop.models.base.CrudJpaService;
 import webshop.models.entities.AttributeEntity;
 import webshop.models.requests.Attribute;
+import webshop.models.responses.AttributeResponse;
 import webshop.repositories.AttributeRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AttributeService extends CrudJpaService<AttributeEntity, Integer> implements AttributeServiceContract {
@@ -27,7 +29,10 @@ public class AttributeService extends CrudJpaService<AttributeEntity, Integer> i
     }
 
     @Override
-    public List<Attribute> getAllByCategoryId(Integer categoryId) {
-        return null;
+    public List<AttributeResponse> getAllByCategoryId(Integer categoryId) {
+        return attributeRepository.getAllByCategoryId(categoryId)
+                .stream()
+                .map(x -> modelMapper.map(x, AttributeResponse.class))
+                .collect(Collectors.toList());
     }
 }

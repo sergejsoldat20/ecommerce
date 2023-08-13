@@ -3,8 +3,8 @@ package webshop.models.requests;
 import lombok.Data;
 
 @Data
-public class Photo {
-    private Integer id;
+public class ProductAttributeRequest {
     private Integer productId;
-    private String photoUrl;
+    private Integer attributeId;
+    private String value;
 }

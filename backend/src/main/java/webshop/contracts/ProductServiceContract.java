@@ -3,14 +3,17 @@ package webshop.contracts;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import webshop.models.base.CrudService;
-import webshop.models.requests.Product;
+import webshop.models.requests.ProductRequest;
+import webshop.models.responses.ProductResponse;
 
 import java.util.List;
 
 public interface ProductServiceContract extends CrudService<Integer> {
 
-    Page<Product> getAllProductsByUserId(Pageable page, Integer accountId);
+    Page<ProductResponse> getAllProducts(Pageable page);
 
-    Page<Product> filterProducts(Pageable page, Double priceFrom, Double priceTo, Boolean timeDesc);
-    Page<Product> filterProductsByCategories(Pageable page, Integer categoryId, List<String> filters);
+    Page<ProductRequest> getAllProductsByUserId(Pageable page, Integer accountId);
+
+    Page<ProductRequest> filterProducts(Pageable page, Double priceFrom, Double priceTo, Boolean timeDesc);
+    Page<ProductRequest> filterProductsByCategories(Pageable page, Integer categoryId, List<String> filters);
 }

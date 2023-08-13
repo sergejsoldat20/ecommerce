@@ -10,6 +10,7 @@ public interface AccountServiceContract extends CrudService<Integer> {
     Boolean checkIfEmailExists(String email);
     List<AccountResponse> getAllAccounts();
     AccountResponse getCurrentAccount();
+    Integer getCurrentAccountId();
     AccountResponse getAccountById(Integer id);
     Boolean getAccountConfirmed(String email);
 }
