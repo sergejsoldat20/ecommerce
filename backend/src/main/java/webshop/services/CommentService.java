@@ -3,6 +3,7 @@ package webshop.services;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import webshop.contracts.CommentServiceContract;
+import webshop.exceptions.AppException;
 import webshop.models.base.CrudJpaService;
 import webshop.models.entities.CommentEntity;
 import webshop.models.requests.Comment;
@@ -41,6 +42,14 @@ public class CommentService extends CrudJpaService<CommentEntity, Integer> imple
                         commentResponse.setBelongToUser(true);
                     } else {
                         commentResponse.setBelongToUser(false);
+                    }
+
+                    // find username for comment
+                    try {
+                        commentResponse
+                                .setUsername(accountService.getAccountById(x.getAccountId()).getUsername());
+                    } catch (AppException e) {
+                        throw new RuntimeException(e);
                     }
                     return commentResponse;
                 }).collect(Collectors.toList());

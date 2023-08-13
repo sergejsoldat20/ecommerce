@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import webshop.contracts.AccountServiceContract;
+import webshop.exceptions.AppException;
 import webshop.models.base.CrudJpaService;
 import webshop.models.entities.AccountEntity;
 import webshop.models.requests.Account;
@@ -50,8 +51,8 @@ public class AccountService extends CrudJpaService<AccountEntity, Integer> imple
     }
 
     @Override
-    public AccountResponse getAccountById(Integer id) {
-        return null;
+    public AccountResponse getAccountById(Integer id) throws AppException {
+        return super.findById(id, AccountResponse.class);
     }
 
     @Override
