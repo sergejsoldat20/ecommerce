@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-=======
 import React, { useEffect, useState } from "react";
->>>>>>> 8f28cd3f6437027bee321d44301d286d2b36b498
 import { PropTypes } from "prop-types";
 import "../../src/static/home.css";
 import { UserOutlined } from "@ant-design/icons";
