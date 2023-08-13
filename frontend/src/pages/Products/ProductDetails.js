@@ -4,6 +4,7 @@ import Paragraph from "antd/es/typography/Paragraph";
 import { useParams } from "react-router-dom";
 import productsService from "../../services/products.service";
 import attributeService from "../../services/attribute.service";
+import Comments from "../../components/Comments";
 
 export default function ProductDetails() {
   const [productData, setProductData] = useState();
@@ -98,7 +99,7 @@ export default function ProductDetails() {
   const getContentOfPCommentTab = () => {
     return (
       <div>
-        <p>Comment</p>
+        <Comments productId={id} />
       </div>
     );
   };
