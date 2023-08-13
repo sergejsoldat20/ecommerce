@@ -1,5 +1,6 @@
 package webshop.contracts;
 
+import webshop.exceptions.AppException;
 import webshop.models.base.CrudService;
 import webshop.models.requests.Account;
 import webshop.models.responses.AccountResponse;
@@ -11,6 +12,6 @@ public interface AccountServiceContract extends CrudService<Integer> {
     List<AccountResponse> getAllAccounts();
     AccountResponse getCurrentAccount();
     Integer getCurrentAccountId();
-    AccountResponse getAccountById(Integer id);
+    AccountResponse getAccountById(Integer id) throws AppException;
     Boolean getAccountConfirmed(String email);
 }

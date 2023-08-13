@@ -8,4 +8,5 @@ public class CommentResponse {
     private String text;
     private Timestamp createdTime;
     private Boolean belongToUser;
+    private String username;
 }
