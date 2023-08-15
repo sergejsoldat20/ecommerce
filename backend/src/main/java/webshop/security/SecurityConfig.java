@@ -44,6 +44,8 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/account/current").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
+                .requestMatchers("/account/by-id/**").permitAll()
                 .requestMatchers("/account/**").permitAll()
                 .requestMatchers("/comments/**").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
                 .requestMatchers(HttpMethod.POST,"/attribute-values/insert").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)

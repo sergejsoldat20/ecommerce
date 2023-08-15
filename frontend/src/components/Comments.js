@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
-import "../../src/static/home.css";
-import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Card, List } from "antd";
+import "../../src/static/comments.css";
+import { Button, Card, Input, List } from "antd";
+import { Avatar } from "@mui/material";
 import commentService from "../../src/services/comments.service";
+import { SendOutlined } from "@mui/icons-material";
 
 export default function Comments(props) {
   const [comments, setComments] = useState([]);
+
+  const [singleComment, setSingleComment] = useState();
 
   useEffect(() => {
     loadComments();
@@ -18,10 +21,23 @@ export default function Comments(props) {
       setComments(result.data);
     });
   };
+
+  const handleInsertComment = () => {
+    const commentRequest = {
+      productId: props.productId,
+      text: singleComment,
+    };
+
+    commentService.insertComment(commentRequest).then((result) => {
+      console.log(result.data);
+      loadComments();
+    });
+    setSingleComment("");
+  };
   return (
-    <div className="wrapper">
-      <div className="cardsWrapper">
-        <Card style={{ width: "50%" }} className="homeCard">
+    <div className="commentCards">
+      <div className="commentCardsWrapper">
+        <Card style={{ marginLeft: "5%" }} className="commentCard">
           <List
             itemLayout="horizontal"
             dataSource={comments}
@@ -33,6 +49,7 @@ export default function Comments(props) {
                       style={{
                         backgroundColor: "#7265e6",
                         verticalAlign: "middle",
+                        borderRadius: "50%",
                       }}
                       size="large"
                       gap={1}
@@ -46,6 +63,17 @@ export default function Comments(props) {
               </List.Item>
             )}
           />
+          <div style={{ display: "flex" }}>
+            <Input
+              value={singleComment}
+              onChange={(e) => setSingleComment(e.target.value)}
+              onPressEnter={handleInsertComment}
+            />
+            <Button
+              icon={<SendOutlined />}
+              onClick={() => handleInsertComment()}
+            ></Button>
+          </div>
         </Card>
       </div>
     </div>
@@ -53,5 +81,5 @@ export default function Comments(props) {
 }
 
 Comments.propTypes = {
-  productId: PropTypes.number,
+  productId: PropTypes.string,
 };

@@ -116,11 +116,6 @@ export default function Login() {
                         Prijavi se
                       </button>
                     </div>
-                    <div className={"entrenceLink"}>
-                      <NavLink to={"/entrance"} className={"entrenceLink"}>
-                        Prijavi se za polaganje prijemnog ispita
-                      </NavLink>
-                    </div>
                   </form>
                 </div>
               </div>

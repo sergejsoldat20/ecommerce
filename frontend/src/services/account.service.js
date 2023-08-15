@@ -15,6 +15,10 @@ export const getCurrentUser = () => {
   return authorizedInstance.get("/users/current-user");
 };
 
+export const getAccountById = (id) => {
+  return unauthorizedInstance.get(`/account/by-id/${id}`);
+};
+
 export const checkIfAuthorized = () => {
   if (localStorage.getItem("token") !== null) {
     return true;
@@ -27,4 +31,7 @@ export const checkIfAuthorized = () => {
 export default {
   authenticate,
   register,
+  getAccountById,
+  checkIfAuthorized,
+  getCurrentUser,
 };
