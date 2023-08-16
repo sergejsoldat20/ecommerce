@@ -7,12 +7,12 @@ export const register = (request) => {
   return unauthorizedInstance.post("/api/auth/register", request);
 };
 
-export const authenticate = (request) => {
-  return unauthorizedInstance.post("/api/auth/authenticate", request);
+export const authenticate = async (request) => {
+  return await unauthorizedInstance.post("/api/auth/authenticate", request);
 };
 
 export const getCurrentUser = () => {
-  return authorizedInstance.get("/users/current-user");
+  return authorizedInstance.get("/account/current");
 };
 
 export const getAccountById = (id) => {
@@ -23,6 +23,7 @@ export const checkIfAuthorized = () => {
   if (localStorage.getItem("token") !== null) {
     return true;
   } else {
+    console.log("false");
     return false;
   }
 };

@@ -6,6 +6,8 @@ import { BiError } from "react-icons/bi";
 import "../../static/login.css";
 import { useNavigate } from "react-router-dom";
 import accountService from "../../services/account.service";
+import axios from "axios";
+import { message } from "antd";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,18 +29,19 @@ export default function Login() {
     setShowPassword((currValue) => !currValue);
   };
 
-  const onsubmit = (data) => {
-    accountService
-      .authenticate(data)
-      .then((result) => {
-        if (result.status === 200) {
-          localStorage.setItem("token", result.data.token);
-          navigate("/");
-        }
-      })
-      .catch((err) => {
-        alert("Wrong username or password!");
-      });
+  const onsubmit = async (data) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:9000/api/auth/authenticate",
+        data
+      );
+      const jwt = response.data.token;
+      localStorage.setItem("token", jwt);
+
+      navigate("/");
+    } catch (error) {
+      message.error("Niste se uspjesno ulogovali");
+    }
   };
   return (
     <div className="container position-absolute card-top top-50 start-50 translate-middle mt-4">
@@ -115,6 +118,11 @@ export default function Login() {
                       >
                         Prijavi se
                       </button>
+                    </div>
+                    <div className={"entrenceLink"}>
+                      <NavLink to={"/signup"} className={"entrenceLink"}>
+                        Ako nemas nalog registruj se
+                      </NavLink>
                     </div>
                   </form>
                 </div>

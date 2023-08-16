@@ -15,4 +15,5 @@ public class ProductResponse {
     private Integer categoryId;
     private Integer accountId;
     private Double price;
+    private String photoUrl;
 }

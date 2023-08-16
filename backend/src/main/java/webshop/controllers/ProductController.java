@@ -13,6 +13,7 @@ import webshop.services.ProductAttributeService;
 import webshop.services.ProductService;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -65,6 +66,21 @@ public class ProductController {
         }
     }
 
+    @GetMapping("/by-account-id/{id}")
+    public ResponseEntity<List<ProductResponse>> getAllByAccountId(@PathVariable Integer id) {
+        List<ProductResponse> response = productService.getAllProductsByUserId(id);
+        if(response != null) {
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable Integer id) throws AppException {
+        productService.setToDeleted(id);
+        return ResponseEntity.ok("Product deleted");
+    }
 
    /* @GetMapping("/test")
     public ResponseEntity<?> GetAll(){

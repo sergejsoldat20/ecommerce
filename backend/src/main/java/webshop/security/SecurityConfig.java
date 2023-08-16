@@ -47,6 +47,7 @@ public class SecurityConfig {
                 .requestMatchers("/account/current").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
                 .requestMatchers("/account/by-id/**").permitAll()
                 .requestMatchers("/account/**").permitAll()
+                .requestMatchers("/products/delete/**").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
                 .requestMatchers("/comments/**").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
                 .requestMatchers(HttpMethod.POST,"/attribute-values/insert").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)
                 .requestMatchers(HttpMethod.POST,"/products/insert").hasAnyAuthority(SecurityConsts.ADMIN, SecurityConsts.USER)

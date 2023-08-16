@@ -1,0 +1,22 @@
+.listWrapper {
+    width: 95%;
+    padding: 40%, 20%;
+  }
+  
+  .cardsWrapper {
+    padding: 2%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 3;
+    gap: 2%;
+    row-gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .homeCard {
+    width: 80% !important;
+  }

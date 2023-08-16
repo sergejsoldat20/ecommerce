@@ -21,8 +21,13 @@ public class AccountController {
     }
 
     @GetMapping("current")
-    public ResponseEntity<AccountResponse> getCurrentAccount() {
-        return ResponseEntity.ok(accountService.getCurrentAccount());
+    public ResponseEntity<?> getCurrentAccount() {
+        AccountResponse response = accountService.getCurrentAccount();
+        if(response != null) {
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.ok("No account found");
+        }
     }
 
     @GetMapping("/by-id/{id}")

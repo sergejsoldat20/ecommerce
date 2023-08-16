@@ -20,6 +20,14 @@ export const insert = (request) => {
   return authorizedInstance.post("/products/insert", request);
 };
 
+export const getProductsByAccountId = (id) => {
+  return instance.get(`/products/by-account-id/${id}`);
+};
+
+export const deleteProduct = (id) => {
+  return authorizedInstance.delete(`/products/delete/${id}`);
+};
+
 export const uploadPhoto = (file, id) => {
   const formData = new FormData();
   formData.append("file", file);
@@ -44,4 +52,6 @@ export default {
   getPhotoByProductId,
   insert,
   uploadPhoto,
+  deleteProduct,
+  getProductsByAccountId,
 };

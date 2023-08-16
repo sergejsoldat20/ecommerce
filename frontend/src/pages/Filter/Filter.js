@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Products from "../Products/Products";
+import categoriesService from "../../services/categories.service";
+import { useNavigate } from "react-router-dom";
+import { WindowSharp } from "@mui/icons-material";
 
 export default function Filter() {
+  const [categories, setCategories] = useState();
+  const loadCategories = () => {
+    categoriesService.getAllCategories().then((response) => {
+      if (response.status === 200) {
+        setCategories(response.data.content);
+      } else {
+        alert("Can't fetch data");
+      }
+    });
+  };
+  useEffect(() => {
+    loadCategories();
+  }, []);
   const randomNames = [
     "John",
     "Jane",
