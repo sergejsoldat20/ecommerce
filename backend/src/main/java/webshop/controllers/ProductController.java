@@ -5,12 +5,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import webshop.exceptions.AppException;
+import webshop.models.dto.SingleFilter;
 import webshop.models.requests.ProductRequest;
 import webshop.models.responses.ProductResponse;
-import webshop.services.AccountService;
-import webshop.services.AttributeService;
-import webshop.services.ProductAttributeService;
-import webshop.services.ProductService;
+import webshop.services.*;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -22,14 +20,13 @@ public class ProductController {
 
     private final ProductService productService;
     private final AccountService accountService;
-    private final AttributeService attributeService;
-    private final ProductAttributeService productAttributeService;
+    private final FilterService filterService;
 
-    public ProductController(ProductService productService, AccountService accountService, AttributeService attributeService, ProductAttributeService productAttributeService) {
+
+    public ProductController(ProductService productService, AccountService accountService, FilterService filterService) {
         this.productService = productService;
         this.accountService = accountService;
-        this.attributeService = attributeService;
-        this.productAttributeService = productAttributeService;
+        this.filterService = filterService;
     }
 
     @GetMapping
@@ -82,42 +79,19 @@ public class ProductController {
         return ResponseEntity.ok("Product deleted");
     }
 
-   /* @GetMapping("/test")
-    public ResponseEntity<?> GetAll(){
+    @PostMapping("/filter")
+    public ResponseEntity<?> responseEntity(
+            @RequestParam(name = "category", required = false) String category,
+            @RequestParam(name = "minPrice", required = false) Double minPrice,
+            @RequestParam(name = "maxPrice", required = false) Double maxPrice,
+            @RequestBody List<SingleFilter> filters, Pageable pageable) {
 
-        AttributeEntity attribute = new AttributeEntity();
-        attribute.setName("Color");
-        attribute.setType("String");
-        attribute.setCategoryId(1);
+        if (category == null && filters.size() == 0){
+            return ResponseEntity.ok(productService.getAllProducts(pageable));
+        } else if(category != null && filters.size() == 0) {
+            return ResponseEntity.ok(productService.filterProductsByCategories(pageable, category, minPrice, maxPrice));
+        }
 
-        // Creating a ProductEntity
-        ProductEntity product = new ProductEntity();
-        product.setName("Sample ProductRequest");
-        product.setDescription("This is a sample product description.");
-        product.setCategoryId(1);
-        product.setAccountId(1);
-        product.setDeleted(false);
-        product.setCreatedTime(new Timestamp(System.currentTimeMillis()));
-
-        // Creating a ProductAttributeEntity
-        ProductAttributeEntity productAttribute = new ProductAttributeEntity();
-        productAttribute.setValue("Red");
-
-        // Setting the relationship between product and attribute
-        //productAttribute.setProductId(product.getId());
-
-        ProductAttributeEntityPK pk = new ProductAttributeEntityPK();
-        pk.setProductId(2);
-        pk.setAttributeId(1);
-
-        productAttribute.setId(pk);
-        //productAttribute.setAttributeId(attribute.getId());
-
-        productService.insert(product, ProductEntity.class);
-        attributeService.insert(attribute, AttributeEntity.class);
-        productAttributeService.addToDatabase(productAttribute);
-
-
-        return ResponseEntity.ok("ok");
-    }*/
+        return ResponseEntity.ok(filterService.filterByCategoryAndAttributes(category, filters, pageable, minPrice, maxPrice));
+    }
 }

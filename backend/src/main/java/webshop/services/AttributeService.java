@@ -35,4 +35,17 @@ public class AttributeService extends CrudJpaService<AttributeEntity, Integer> i
                 .map(x -> modelMapper.map(x, AttributeResponse.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public String getAttributeTypeByName(String name) {
+        return attributeRepository
+                .findAll()
+                .stream()
+                .filter(x -> x.getName().equals(name))
+                .map(AttributeEntity::getType)
+                .findFirst()
+                .orElse(null);
+    }
+
+
 }

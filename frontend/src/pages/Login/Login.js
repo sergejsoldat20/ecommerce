@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { BiError } from "react-icons/bi";
 import "../../static/login.css";
 import { useNavigate } from "react-router-dom";
-import accountService from "../../services/account.service";
 import axios from "axios";
+import { getAuth } from "../../redux-store/selectors";
 import { message } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, login } from "../../redux-store/auth";
+import accountService from "../../services/account.service";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
     handleSubmit,
@@ -29,19 +33,16 @@ export default function Login() {
     setShowPassword((currValue) => !currValue);
   };
 
-  const onsubmit = async (data) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:9000/api/auth/authenticate",
-        data
-      );
-      const jwt = response.data.token;
-      localStorage.setItem("token", jwt);
-
-      navigate("/");
-    } catch (error) {
-      message.error("Niste se uspjesno ulogovali");
-    }
+  const onsubmit = (data) => {
+    accountService.authenticate(data).then((response) => {
+      if (response.status === 200) {
+        message.success("Uspjesno ste se prijavili!");
+        localStorage.setItem("token", response.data.token);
+        navigate("/");
+      } else {
+        message.error("Pogresno ime ili lozinka!");
+      }
+    });
   };
   return (
     <div className="container position-absolute card-top top-50 start-50 translate-middle mt-4">

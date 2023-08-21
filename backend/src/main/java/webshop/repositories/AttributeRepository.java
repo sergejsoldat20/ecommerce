@@ -8,4 +8,5 @@ import java.util.List;
 public interface AttributeRepository extends JpaRepository<AttributeEntity, Integer> {
 
     List<AttributeEntity> getAllByCategoryId(Integer categoryId);
+
 }

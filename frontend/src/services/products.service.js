@@ -41,8 +41,18 @@ export const uploadPhoto = (file, id) => {
       },
     })
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
     });
+};
+
+export const filterProducts = (filtersList, categoryName, pageSize, page) => {
+  if (categoryName === null) {
+    return instance.post(`/products/filter?page=${page}&size=${pageSize}`, []);
+  }
+  return instance.post(
+    `/products/filter?category=${categoryName}&page=${page}&size=${pageSize}`,
+    filtersList
+  );
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -54,4 +64,5 @@ export default {
   uploadPhoto,
   deleteProduct,
   getProductsByAccountId,
+  filterProducts,
 };

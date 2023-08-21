@@ -59,4 +59,11 @@ public class AccountService extends CrudJpaService<AccountEntity, Integer> imple
     public Boolean getAccountConfirmed(String email) {
         return null;
     }
+
+    @Override
+    public AccountEntity getAccountByUsername(String username) {
+        return accountRepository.getByUsername(username);
+    }
+
+
 }

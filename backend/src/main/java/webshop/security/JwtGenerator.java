@@ -7,11 +7,18 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import webshop.services.AccountService;
 
 import java.util.Date;
 
 @Component
 public class JwtGenerator {
+
+    private final AccountService accountService;
+
+    public JwtGenerator(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
     public String generateToken(Authentication authentication) {
         String username = authentication.getName();
@@ -20,6 +27,7 @@ public class JwtGenerator {
 
         String token = Jwts.builder()
                 .setSubject(username)
+                .claim("id", accountService.getAccountByUsername(username).getId())
                 .setIssuedAt(currentDate)
                 .setExpiration(expireDate)
                 .signWith(SignatureAlgorithm.HS512, SecurityConsts.JWT_SECRET_KEY)

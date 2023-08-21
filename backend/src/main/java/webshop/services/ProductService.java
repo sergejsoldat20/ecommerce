@@ -11,21 +11,23 @@ import webshop.models.base.CrudJpaService;
 import webshop.models.entities.ProductEntity;
 import webshop.models.requests.ProductRequest;
 import webshop.models.responses.ProductResponse;
+import webshop.repositories.CategoryRepository;
 import webshop.repositories.ProductRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class ProductService extends CrudJpaService<ProductEntity, Integer> implements ProductServiceContract {
 
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
     private final PhotoService photoService;
     private final ModelMapper modelMapper;
-    public ProductService(ProductRepository productRepository, PhotoService photoService, ModelMapper modelMapper) {
+    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository, PhotoService photoService, ModelMapper modelMapper) {
         super(productRepository, modelMapper, ProductEntity.class);
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
         this.photoService = photoService;
         this.modelMapper = modelMapper;
     }
@@ -69,8 +71,26 @@ public class ProductService extends CrudJpaService<ProductEntity, Integer> imple
     }
 
     @Override
-    public Page<ProductRequest> filterProductsByCategories(Pageable page, Integer categoryId, List<String> filters) {
-        return null;
+    public Page<ProductResponse> filterProductsByCategories(Pageable page,
+                                                            String category,
+                                                            Double minPrice,
+                                                            Double maxPrice) {
+
+        if(minPrice == null) minPrice = 0.0;
+        if(maxPrice == null) maxPrice = Double.MAX_VALUE;
+
+        Double finalMinPrice = minPrice;
+        Double finalMaxPrice = maxPrice;
+        List<ProductResponse> response = productRepository
+                .findAll()
+                .stream()
+                .filter(x -> !x.getDeleted())
+                .filter(x -> x.getCategoryId().equals(categoryRepository.findByName(category).getId()))
+                .filter(x -> x.getPrice() >= finalMinPrice && x.getPrice() <= finalMaxPrice)
+                .map(x -> modelMapper.map(x, ProductResponse.class))
+                .toList();
+
+        return convertProductsToPageable(page, response);
     }
 
     @Override

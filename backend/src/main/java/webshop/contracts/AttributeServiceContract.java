@@ -10,4 +10,6 @@ public interface AttributeServiceContract extends CrudService<Integer> {
 
     List<Attribute> getAllAttributes();
     List<AttributeResponse> getAllByCategoryId(Integer categoryId);
+
+    String getAttributeTypeByName(String name);
 }

@@ -6,4 +6,5 @@ import lombok.Data;
 public class AttributeValueResponse {
     private String attributeName;
     private String value;
+    private String type;
 }

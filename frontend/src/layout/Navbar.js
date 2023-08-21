@@ -1,25 +1,39 @@
-import React, { useState, useEffect } from "react";
-import accountService from "../services/account.service";
+import React, { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { getAuth } from "../redux-store/selectors";
+import { LOCAL_STORAGE_VALUE, logOut } from "../redux-store/auth";
+import accountService, { validate } from "../services/account.service";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [account, setAccount] = useState();
 
-  useEffect(() => {
-    loadCurrentAccount();
-  }, []);
-
-  const loadCurrentAccount = async () => {
-    if (localStorage.getItem("token") !== null) {
-      accountService.getCurrentUser().then((result) => {
-        setAccount(result.data);
-      });
-    }
-  };
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const logout = () => {
     localStorage.removeItem("token");
-    // navigate("/login");
+    navigate("/login");
+  };
+
+  useEffect(() => {
+    validateUser();
+  });
+
+  const validateUser = () => {
+    accountService
+      .validate()
+      .then((response) => {
+        if (response.status === 200) {
+          setAccount(response.data);
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
+      })
+      .catch((err) => {
+        console.log("nije validate");
+      });
   };
 
   return (
@@ -58,7 +72,7 @@ export default function Navbar() {
               </Typography>
             </a>
           </li>
-          {accountService.checkIfAuthorized() && (
+          {isAuthenticated && (
             <li className="nav-item active">
               <Typography
                 variant="h6"
@@ -76,7 +90,7 @@ export default function Navbar() {
             </li>
           )}
 
-          {accountService.checkIfAuthorized() && (
+          {isAuthenticated && (
             <li className="nav-item active">
               <Typography
                 variant="h6"
@@ -90,14 +104,14 @@ export default function Navbar() {
                 <a
                   className="nav-link"
                   // style={{ paddingInline: "1rem" }}
-                  href={`/users/${account?.id}`}
+                  href={`/users/${account.id}`}
                 >
                   Profil
                 </a>
               </Typography>
             </li>
           )}
-          {accountService.checkIfAuthorized() && (
+          {isAuthenticated && (
             <li className="nav-item active">
               <Typography
                 variant="h6"
@@ -111,7 +125,7 @@ export default function Navbar() {
                 <a
                   className="nav-link"
                   // style={{ paddingInline: "1rem" }}
-                  href={"/administration"}
+                  href={"/reports"}
                 >
                   Podrska
                 </a>
@@ -122,7 +136,7 @@ export default function Navbar() {
       </div>
 
       {/* <div style={{ width: 40 }}></div> */}
-      {accountService.checkIfAuthorized() && (
+      {isAuthenticated && (
         <ul
           className="navbar-nav"
           //={{ paddingLeft: "3rem", paddingRight: "1rem" }}
@@ -144,7 +158,7 @@ export default function Navbar() {
           </li>
         </ul>
       )}
-      {!accountService.checkIfAuthorized() && (
+      {!isAuthenticated && (
         <ul
           className="navbar-nav"
           //={{ paddingLeft: "3rem", paddingRight: "1rem" }}

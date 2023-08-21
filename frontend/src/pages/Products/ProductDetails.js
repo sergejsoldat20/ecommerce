@@ -23,6 +23,7 @@ import {
 import accountService from "../../services/account.service";
 
 export default function ProductDetails() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [productData, setProductData] = useState();
   const { id } = useParams();
   const [productAccount, setProductAccount] = useState();
@@ -30,6 +31,7 @@ export default function ProductDetails() {
   const [attributes, setAttributes] = useState([]);
   const [photoUrl, setPhotoUrl] = useState();
   useEffect(() => {
+    validateUser();
     loadProductData();
     loadPhoto();
   }, []);
@@ -49,7 +51,7 @@ export default function ProductDetails() {
   const loadProductData = () => {
     productsService.getProductById(id).then((result) => {
       setProductData(result.data);
-      console.log(result.data);
+      // console.log(result.data);
       attributeService.getArributeValuesByProductId(id).then((response) => {
         setAttributes(response.data);
       });
@@ -57,6 +59,22 @@ export default function ProductDetails() {
         setProductAccount(response.data);
       });
     });
+  };
+
+  const validateUser = () => {
+    accountService
+      .validate()
+      .then((response) => {
+        if (response.status === 200) {
+          // setAccount(response.data);
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
+      })
+      .catch((err) => {
+        console.log("nije validate");
+      });
   };
 
   const getContentOfProductTab = () => {
@@ -191,14 +209,16 @@ export default function ProductDetails() {
                       style={{ margin: "5%", width: "100%" }}
                     >
                       <Grid item xs={12} sm={6} md={4} lg={3}>
-                        <div className="d-flex align-items-center">
-                          <button
-                            type="submit"
-                            className="btn btn-main w-100 login-submit"
-                          >
-                            <Typography variant="body1">Kupi</Typography>
-                          </button>
-                        </div>
+                        {isAuthenticated && (
+                          <div className="d-flex align-items-center">
+                            <button
+                              type="submit"
+                              className="btn btn-main w-100 login-submit"
+                            >
+                              <Typography variant="body1">Kupi</Typography>
+                            </button>
+                          </div>
+                        )}
                       </Grid>
                     </Grid>
                   </div>

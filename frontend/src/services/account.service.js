@@ -19,6 +19,10 @@ export const getAccountById = (id) => {
   return unauthorizedInstance.get(`/account/by-id/${id}`);
 };
 
+export const validate = () => {
+  return authorizedInstance.get("/api/auth/validate");
+};
+
 export const checkIfAuthorized = () => {
   if (localStorage.getItem("token") !== null) {
     return true;
@@ -35,4 +39,5 @@ export default {
   getAccountById,
   checkIfAuthorized,
   getCurrentUser,
+  validate,
 };

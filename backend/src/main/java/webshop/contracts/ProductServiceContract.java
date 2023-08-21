@@ -16,7 +16,8 @@ public interface ProductServiceContract extends CrudService<Integer> {
     List<ProductResponse> getAllProductsByUserId( Integer accountId);
 
     Page<ProductRequest> filterProducts(Pageable page, Double priceFrom, Double priceTo, Boolean timeDesc);
-    Page<ProductRequest> filterProductsByCategories(Pageable page, Integer categoryId, List<String> filters);
+    Page<ProductResponse> filterProductsByCategories(Pageable page, String category, Double minPrice, Double maxPrice);
 
     void setToDeleted(Integer id) throws AppException;
+
 }

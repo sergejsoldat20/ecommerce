@@ -7,6 +7,6 @@ import lombok.Data;
 public class AttributeResponse {
     private Integer id;
     private String name;
-   //  private String type;
+    private String type;
     private Integer categoryId;
 }

@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 import "../../static/home.css";
 import productService from "../../services/products.service";
 import ProductCard from "./ProductCard";
+import { PropTypes } from "prop-types";
 
-export default function Products() {
+export default function Products(properties) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export default function Products() {
         >
           {Array.from({ length: 4 }, (_, colIndex) => {
             const productIndex = rowIndex * 4 + colIndex;
-            const product = products[productIndex];
+            const product = properties.products[productIndex];
             if (product != null) {
               const props = {
                 name: product.name,
@@ -43,7 +44,7 @@ export default function Products() {
                 price: product.price,
                 id: product.id,
               };
-              console.log(props);
+
               return (
                 <Col xs={20} sm={12} lg={6} key={colIndex}>
                   <div id={colIndex} className="wrapper">
@@ -61,3 +62,7 @@ export default function Products() {
     </div>
   );
 }
+
+Products.propTypes = {
+  products: PropTypes.array,
+};

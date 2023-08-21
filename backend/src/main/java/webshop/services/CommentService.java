@@ -26,11 +26,9 @@ public class CommentService extends CrudJpaService<CommentEntity, Integer> imple
         this.modelMapper = modelMapper;
     }
 
-
-
     @Override
     public List<CommentResponse> getAllByProductId(Integer productId) {
-        Integer currentUserId = accountService.getCurrentAccount().getId();
+        // Integer currentUserId = accountService.getCurrentAccount().getId();
         List<CommentResponse> response = repository
                 .getAllByProductId(productId)
                 .stream()
@@ -38,11 +36,6 @@ public class CommentService extends CrudJpaService<CommentEntity, Integer> imple
                     CommentResponse commentResponse = new CommentResponse();
                     commentResponse.setText(x.getText());
                     commentResponse.setCreatedTime(x.getCreatedTime());
-                    if (x.getAccountId() == currentUserId) {
-                        commentResponse.setBelongToUser(true);
-                    } else {
-                        commentResponse.setBelongToUser(false);
-                    }
 
                     // find username for comment
                     try {

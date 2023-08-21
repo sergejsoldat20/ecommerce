@@ -5,15 +5,34 @@ import { Button, Card, Input, List } from "antd";
 import { Avatar } from "@mui/material";
 import commentService from "../../src/services/comments.service";
 import { SendOutlined } from "@mui/icons-material";
+import accountService from "../services/account.service";
 
 export default function Comments(props) {
   const [comments, setComments] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const [singleComment, setSingleComment] = useState();
 
   useEffect(() => {
+    validateUser();
     loadComments();
   }, []);
+
+  const validateUser = () => {
+    accountService
+      .validate()
+      .then((response) => {
+        if (response.status === 200) {
+          // setAccount(response.data);
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
+      })
+      .catch((err) => {
+        console.log("nije validate");
+      });
+  };
 
   const loadComments = () => {
     commentService.getCommentsByProductId(props.productId).then((result) => {
@@ -63,17 +82,19 @@ export default function Comments(props) {
               </List.Item>
             )}
           />
-          <div style={{ display: "flex" }}>
-            <Input
-              value={singleComment}
-              onChange={(e) => setSingleComment(e.target.value)}
-              onPressEnter={handleInsertComment}
-            />
-            <Button
-              icon={<SendOutlined />}
-              onClick={() => handleInsertComment()}
-            ></Button>
-          </div>
+          {isAuthenticated && (
+            <div style={{ display: "flex" }}>
+              <Input
+                value={singleComment}
+                onChange={(e) => setSingleComment(e.target.value)}
+                onPressEnter={handleInsertComment}
+              />
+              <Button
+                icon={<SendOutlined />}
+                onClick={() => handleInsertComment()}
+              ></Button>
+            </div>
+          )}
         </Card>
       </div>
     </div>

@@ -2,6 +2,7 @@ package webshop.contracts;
 
 import webshop.exceptions.AppException;
 import webshop.models.base.CrudService;
+import webshop.models.entities.AccountEntity;
 import webshop.models.requests.Account;
 import webshop.models.responses.AccountResponse;
 
@@ -14,4 +15,6 @@ public interface AccountServiceContract extends CrudService<Integer> {
     Integer getCurrentAccountId();
     AccountResponse getAccountById(Integer id) throws AppException;
     Boolean getAccountConfirmed(String email);
+    AccountEntity getAccountByUsername(String username);
+   //  Boolean checkIfAccountIsAdmin(Integer id);
 }

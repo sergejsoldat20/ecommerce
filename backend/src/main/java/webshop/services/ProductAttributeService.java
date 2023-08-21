@@ -70,7 +70,7 @@ public class ProductAttributeService extends CrudJpaService<ProductAttributeEnti
                 .filter(x -> x.getId().getProductId() == productId)
                 .collect(Collectors.toList());
 
-        productAttributesByProductId.stream().forEach(System.out::println);
+        // productAttributesByProductId.stream().forEach(System.out::println);
 
         for(ProductAttributeEntity item : productAttributesByProductId) {
             AttributeValueResponse responseItem = new AttributeValueResponse();
@@ -81,10 +81,14 @@ public class ProductAttributeService extends CrudJpaService<ProductAttributeEnti
                     .findFirst()
                     .orElse(null);
 
+
             responseItem.setAttributeName(currentAttribute.getName());
+            responseItem.setType(currentAttribute.getType());
 
             response.add(responseItem);
         }
         return response;
     }
+
+
 }
