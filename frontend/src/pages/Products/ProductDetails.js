@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { Image, Tabs } from "antd";
 import moment from "moment/moment";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import productsService from "../../services/products.service";
 import attributeService from "../../services/attribute.service";
 import Comments from "../../components/Comments";
@@ -27,6 +27,7 @@ export default function ProductDetails() {
   const [productData, setProductData] = useState();
   const { id } = useParams();
   const [productAccount, setProductAccount] = useState();
+  const navigate = useNavigate();
 
   const [attributes, setAttributes] = useState([]);
   const [photoUrl, setPhotoUrl] = useState();
@@ -35,6 +36,10 @@ export default function ProductDetails() {
     loadProductData();
     loadPhoto();
   }, []);
+
+  const handleOnBuy = () => {
+    navigate("/buy");
+  };
 
   const loadPhoto = () => {
     productsService.getPhotoByProductId(id).then((result) => {
@@ -214,6 +219,7 @@ export default function ProductDetails() {
                             <button
                               type="submit"
                               className="btn btn-main w-100 login-submit"
+                              onClick={() => handleOnBuy()}
                             >
                               <Typography variant="body1">Kupi</Typography>
                             </button>

@@ -1,36 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { NavLink, useParams } from "react-router-dom";
-import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
+import { useParams } from "react-router-dom";
+
 import { BiError } from "react-icons/bi";
 import "../../static/login.css";
 import { useNavigate } from "react-router-dom";
 import { message } from "antd";
 
-import accountService from "../../services/account.service";
-
-export default function ConfirmPasswordForm() {
+export default function BuyProductForm() {
   const navigate = useNavigate();
-  const { username } = useParams();
+  // const { username } = useParams();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      pin: "0000",
+      card: "0000-0000-0000-0000",
     },
   });
 
   const onsubmit = (data) => {
-    accountService
-      .confirmPin(data, username)
-      .then((response) => {
-        navigate("/login");
-      })
-      .catch((err) => {
-        alert("cant confirm email");
-      });
+    message.success("Kupili ste proizvod");
+    navigate("/");
   };
   return (
     <div className="container position-absolute card-top top-50 start-50 translate-middle mt-4">
@@ -48,7 +40,7 @@ export default function ConfirmPasswordForm() {
                         className="mb-2 text-white login-label"
                         htmlFor="pin"
                       >
-                        Pin
+                        Broj kartice
                       </label>
                       <input
                         type="text"
@@ -56,7 +48,7 @@ export default function ConfirmPasswordForm() {
                         name={"pin"}
                         {...register("pin", { required: true })}
                       />
-                      {errors.pin && (
+                      {errors.card && (
                         <span className="loggin-error">
                           <BiError size={20} color={"red"} /> Ovo polje je
                           obavezno!
@@ -69,7 +61,7 @@ export default function ConfirmPasswordForm() {
                         type="submit"
                         className="btn btn-main w-100 login-submit"
                       >
-                        Dalje
+                        Potvrdi kupovinu
                       </button>
                     </div>
                     <div className={"entrenceLink"}></div>

@@ -118,19 +118,19 @@ public class AuthController {
     }
 
     @PostMapping("/confirm-pin/{username}")
-    public ResponseEntity<?> confirmPin(@PathVariable String username, @RequestBody ConfirmEmailRequest request) throws AppException {
+    public ResponseEntity<?> confirmPin(@PathVariable String username,
+                                        @RequestBody ConfirmEmailRequest request) throws AppException {
+
         AccountEntity account = accountService.getAccountByUsername(username);
         if(account == null) {
             return new ResponseEntity<>("Account with username " + username + " does not exist!", HttpStatus.BAD_REQUEST);
         }
         String pin = usernameConfirmationPinMap.get(username);
-        if(pin == null) {
-            return new ResponseEntity<>("Pin for username " + username + " does not exist!", HttpStatus.BAD_REQUEST);
-        }
+
 
         if(pin.equals(request.getPin())) {
             account.setIsAccountConfirmed(true);
-            accountService.update(account.getId(), account,AccountResponse.class);
+            accountService.update(account.getId(), account, AccountResponse.class);
             return ResponseEntity.ok("Account confirmed!");
         } else {
             return new ResponseEntity<>("Pin is not correct!", HttpStatus.BAD_REQUEST);

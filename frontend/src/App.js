@@ -13,6 +13,8 @@ import AttributesForm from "./pages/Forms/AttributesForm";
 import ProductDetails from "./pages/Products/ProductDetails";
 import AccountDetails from "./pages/Account/AccountDetails";
 import Reports from "./pages/Reports/Reports";
+import ConfirmPasswordForm from "./pages/Forms/ConfirmPasswordForm";
+import BuyProductForm from "./pages/Forms/BuyProductForm";
 
 function App() {
   return (
@@ -30,6 +32,12 @@ function App() {
           <Route element={<ProductDetails />} exact path={"/products/:id"} />
           <Route element={<AccountDetails />} exact path={"/users/:id"} />
           <Route element={<Reports />} exact path={"/reports"} />
+          <Route element={<BuyProductForm />} exact path={"/buy"} />
+          <Route
+            element={<ConfirmPasswordForm />}
+            exact
+            path={"/confirm-password/:username"}
+          />
           {/* <Route element={<ProductsTest />} path={"/test"} /> */}
         </Routes>
       </BrowserRouter>

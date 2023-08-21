@@ -33,7 +33,7 @@ export default function RegistrationForm() {
   const onsubmit = (data) => {
     accountService.register(data).then((result) => {
       if (result.status === 200) {
-        navigate("/login");
+        navigate(`/confirm-password/${result.data.username}`);
       } else {
         alert("Korisnicko ime ili email su zauzeti!");
       }

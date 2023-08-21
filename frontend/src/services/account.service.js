@@ -32,6 +32,13 @@ export const checkIfAuthorized = () => {
   }
 };
 
+export const confirmPin = (request, username) => {
+  return unauthorizedInstance.post(
+    `/api/auth/confirm-pin/${username}`,
+    request
+  );
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   authenticate,
@@ -40,4 +47,5 @@ export default {
   checkIfAuthorized,
   getCurrentUser,
   validate,
+  confirmPin,
 };

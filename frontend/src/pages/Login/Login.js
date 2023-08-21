@@ -34,15 +34,20 @@ export default function Login() {
   };
 
   const onsubmit = (data) => {
-    accountService.authenticate(data).then((response) => {
-      if (response.status === 200) {
-        message.success("Uspjesno ste se prijavili!");
-        localStorage.setItem("token", response.data.token);
-        navigate("/");
-      } else {
-        message.error("Pogresno ime ili lozinka!");
-      }
-    });
+    accountService
+      .authenticate(data)
+      .then((response) => {
+        if (response.status === 200) {
+          message.success("Uspjesno ste se prijavili!");
+          localStorage.setItem("token", response.data.token);
+          navigate("/");
+        } else {
+          message.error("Pogresno ime ili lozinka!");
+        }
+      })
+      .catch((err) => {
+        alert("Pogresno ime ili lozinka!");
+      });
   };
   return (
     <div className="container position-absolute card-top top-50 start-50 translate-middle mt-4">
