@@ -19,4 +19,7 @@ public class CategoryEntity implements BaseEntity<Integer> {
     @Column(name = "name")
     private String name;
 
+    @Basic
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
 }

@@ -35,10 +35,13 @@ export default function Comments(props) {
   };
 
   const loadComments = () => {
-    commentService.getCommentsByProductId(props.productId).then((result) => {
-      console.log(result.data);
-      setComments(result.data);
-    });
+    commentService
+      .getCommentsByProductId(props.productId)
+      .then((result) => {
+        console.log(result.data);
+        setComments(result.data);
+      })
+      .catch((error) => {});
   };
 
   const handleInsertComment = () => {

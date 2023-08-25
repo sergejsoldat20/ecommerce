@@ -2,7 +2,10 @@ package webshop.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import webshop.exceptions.AppException;
 import webshop.models.requests.ReportMessageRequest;
+import webshop.models.requests.SendEmailRequest;
+import webshop.models.responses.ReportMessageResponse;
 import webshop.services.AccountService;
 import webshop.services.ReportMessageService;
 
@@ -29,5 +32,21 @@ public class ReportMessageController {
     public ResponseEntity<?> insertReportMessage(@RequestBody ReportMessageRequest request) {
         reportMessageService.insertReportMessage(request);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/admin/unread")
+    public ResponseEntity<?> getUnreadMessages() {
+        return ResponseEntity.ok(reportMessageService.getUnreadMessages());
+    }
+
+    @PostMapping("/admin/send-email")
+    public ResponseEntity<?> sendEmailToUser(@RequestBody SendEmailRequest request) {
+        reportMessageService.sendEmailToUser(request.getEmail(), request.getMessage(), request.getMessageId());
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/admin/{id}")
+    public ResponseEntity<?> getReportMessageById(@PathVariable Integer id) throws AppException {
+        return ResponseEntity.ok(reportMessageService.getMessageById(id));
     }
 }

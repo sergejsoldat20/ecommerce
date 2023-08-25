@@ -11,4 +11,6 @@ public class AccountResponse {
     private String phoneNumber;
     private String email;
     private String location;
+    private String role;
+    private Boolean isAccountConfirmed;
 }

@@ -11,5 +11,6 @@ public class ReportMessageResponse {
     private Boolean isSeen;
     private Integer accountId;
     private String accountUsername;
+    private String accountEmail;
     private Boolean belongsToAdmin;
 }

@@ -25,7 +25,8 @@ public class CategoriesController {
 
     @GetMapping("all-categories")
     public ResponseEntity<List<Category>> getAll() {
-        return ResponseEntity.ok(service.findAll(Category.class));
+
+        return ResponseEntity.ok(service.findAll(Category.class).stream().filter(x -> !x.getIsDeleted()).toList());
     }
 
     @GetMapping("attributes-by-category/{id}")
