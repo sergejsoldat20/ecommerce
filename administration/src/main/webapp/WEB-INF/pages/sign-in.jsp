@@ -20,7 +20,7 @@
     <input type="text" value="sega" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
     <label for="password" class="sr-only">Lozinka</label>
     <input type="password" value="pass" id="password" name="password" class="form-control" placeholder="Password" required>
-    <button class="btn btn-lg btn-success btn-block" type="submit" name="submit">Prijavi se</button>
+    <button class="btn btn-lg btn-info btn-block" type="submit" name="submit">Prijavi se</button>
     <h5><%=session.getAttribute("notification") != null ? session.getAttribute("notification").toString() : ""%>
     </h5>
     <p class="mt-5 mb-3 text-muted">&copy; 2023</p>
